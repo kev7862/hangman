@@ -24,6 +24,25 @@ public class HangMan {
       while (!wordIsGuessed && tries != AmountOfGuesses) {
         System.out.print("Current guesses: ");
         printArray(playerGuess);
+        System.out.print("You have %d tries left.\n", amountOfGuesses - tries);
+        System.out.println("Enter a single character");//THIS IS WHERE YOU PROMPT THE USER FOR INPUT
+        char input = scanner.nextline().charAt(0);// THIS METHOD ONLY TAKES THE FIRST CHARACTER.
+
+        tries ++;//ThIS IS WHERE YOU INCREAMENT USERS TRIES(if user inputs a "minus" we stop the game.)
+        if (input == "-") {
+          weArePlaying = false;
+          wordIsGuessed = true;
+        } else {
+          for (int i = 0; i < randomWordToGuess.length; i++) {
+            if (randomWordToGuess[i] == input) {
+               playerGuess[i] = input;
+            }
+          }
+          if (isTheWordGuessed(playerGuess))  {  //WE CHECK IF THE USER HAS COMPLETED THE WORD, IF SO WE PASS THE PLAYER GUESS ARRAY.
+            wordIsGuessed = true;
+            System.out.println("Congratulations you Won!");
+          }
+        }
       }
 
     }
@@ -32,7 +51,8 @@ public class HangMan {
   }
   public static void printArray(char[] array) {
     for (int i = 0; i < playerGuess.length; i++) {
-      System.out.print(array[i]);
+      System.out.print(array[i] + " ");
     }
+    System.out.println();
   }
 }
