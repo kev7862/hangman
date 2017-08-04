@@ -6,7 +6,7 @@ public class HangMan {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
     String[] guesses = {"reddit", "programming", "fruit", "donut"};
-
+    // MAIN GAME LOOP.
     boolean weArePlaying = true;
     while(weArePlaying) {
       System.out.println("Welcome to my Game of Hangman");
@@ -15,12 +15,24 @@ public class HangMan {
       char[] playerGuess = new char[amountOfGuesses]; //This is where we save the users input. e.g __ _r_ __ _p_
 
       for (int i = 0; i < playerGuess.length; i++) {
-
+        playerGuess[i] = "__";
       }
+      //THIS IS THE LOOP WHERE THE GUESSING TAKES PLACE.
+      boolean wordIsGuessed = false;
+      int tries = 0;
 
+      while (!wordIsGuessed && tries != AmountOfGuesses) {
+        System.out.print("Current guesses: ");
+        printArray(playerGuess);
+      }
 
     }
     System.out.println("Game Over.");
 
+  }
+  public static void printArray(char[] array) {
+    for (int i = 0; i < playerGuess.length; i++) {
+      System.out.print(array[i]);
+    }
   }
 }
